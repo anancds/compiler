@@ -20,14 +20,12 @@ option(USE_MYMATH
 if (USE_MYMATH)
     add_subdirectory(MathFunctions)
     list(APPEND EXTRA_LIBS MathFunctions)
-    list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/MathFunctions")
 endif ()
 
 # 添加TutorialConfig.h的路径到头文件的搜索路径
 add_executable(compiler main.cpp)
 add_executable(tutorial tutorial.cpp)
 target_include_directories(tutorial PUBLIC
-        "${PROJECT_BINARY_DIR}"
-        ${EXTRA_INCLUDES}
+        "${PROJECT_BINARY_DIR}" }
         )
 target_link_libraries(tutorial PUBLIC ${EXTRA_LIBS})
